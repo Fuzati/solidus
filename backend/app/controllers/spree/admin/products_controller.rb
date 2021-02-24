@@ -7,6 +7,7 @@ module Spree
 
       before_action :load_data, except: [:index]
       update.before :update_before
+      update.after :update_gfrc
       helper_method :clone_object_url
       before_action :split_params, only: [:create, :update]
       before_action :normalize_variant_property_rules, only: [:update]
@@ -18,6 +19,18 @@ module Spree
       def index
         session[:return_to] = request.url
         respond_with(@collection)
+      end
+      
+      def update_gfrc
+        if @product.master.prices.where(variant_type: "GFRC").count == 0
+          new_price = @product.master.prices.first.dup
+          new_price.variant_type = "GFRC"
+        else
+          new_price = @product.master.prices.where(variant_type: "GFRC").take
+          amount =  @product.gfrc_amount
+        end
+        new_price.amount = @product.gfrc_amount
+        new_price.save
       end
 
       def destroy

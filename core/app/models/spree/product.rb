@@ -22,6 +22,7 @@ module Spree
       self.classifications.destroy_all
       self.product_promotion_rules = []
     end
+    paginates_per 50
 
     has_many :product_option_types, dependent: :destroy, inverse_of: :product
     has_many :option_types, through: :product_option_types

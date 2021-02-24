@@ -52,7 +52,7 @@ module Spree
       end
 
       @@product_attributes = [
-        :id, :name, :description, :available_on,
+        :id, :name, :description, :available_on, :gfrc_amount,
         :slug, :meta_description, :meta_keywords, :shipping_category_id,
         :taxon_ids, :total_on_hand, :meta_title
       ]

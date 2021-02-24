@@ -2,9 +2,7 @@ Spree.ready(function () {
   'use strict';
 
   function formatOptionType(option_type) {
-    return Select2.util.escapeMarkup(
-      option_type.presentation + ' (' + option_type.material_type + ')'
-    );
+    return Select2.util.escapeMarkup(option_type.presentation);
   }
 
   if ($('#product_option_type_ids').length > 0) {
