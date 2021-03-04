@@ -9,7 +9,12 @@
         match_path: menu_item.match_path,
       ) do
     %>
-      <%- render partial: menu_item.partial if menu_item.partial %>
-    <%- end %>
-  <% end %>
+    <%- render partial: menu_item.partial if menu_item.partial %>
+  <%- end %>
 <% end %>
+<% end %>
+<li class="tab-with-icon <%=@status.nil? ? '' : 'selected'%>">
+  <a class="fa fa-industry icon_link with-tip" href="/admin/production" data-original-title="" title="">
+    <span class="text">Production</span>
+  </a>
+</li>

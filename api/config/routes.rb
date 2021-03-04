@@ -2,6 +2,7 @@
 
 Spree::Core::Engine.routes.draw do
   namespace :admin do
+    get :production, to: 'production#index'
     resources :users do
       resource :api_key, controller: 'users/api_key', only: [:create, :destroy]
 
